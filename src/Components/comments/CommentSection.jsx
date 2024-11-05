@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react';
-import { getArticles } from '../utils/api';
-import { Error } from './Error';
-import { Loading } from './Loading';
-import { ArticlesList } from './articles/ArticlesList';
+import { getCommentsByArticleId } from '../../utils/api';
+import { Loading } from '../Loading';
+import { Error } from '../Error';
+import { CommentList } from './CommentList';
 
-export const Home = () => {
-  const [articleFeed, setArticleFeed] = useState([]);
+export const CommentSection = ({ article_id }) => {
+  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles()
-      .then((articles) => {
-        setArticleFeed(articles);
+    getCommentsByArticleId(article_id)
+      .then((comments) => {
+        setComments(comments);
         setIsLoading(false);
         setError(null);
       })
@@ -21,7 +21,7 @@ export const Home = () => {
         setError(err);
         setIsLoading(false);
       });
-  }, []);
+  }, [article_id]);
 
   if(isLoading){
     return (
@@ -37,8 +37,7 @@ export const Home = () => {
 
   return (
     <section>
-      <h1>Home Feed</h1>
-      <ArticlesList articleFeed={articleFeed} />
+      <CommentList comments={comments} />
     </section>
-  );
+  )
 };

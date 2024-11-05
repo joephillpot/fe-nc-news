@@ -1,7 +1,3 @@
 export const Loading = () => {
-  return (
-    <div>
-      <p>Loading...</p>
-    </div>
-  );
+  return <progress role="loading">Loading...</progress>;
 };

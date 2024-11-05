@@ -1,9 +1,11 @@
-export const Error = ({err}) => {
+export const Error = ({ error }) => {
+  console.log(error);
+  
   return (
     <section>
       <p>Something went wrong</p>
-      <p>{err.res.status}</p>
-      <p>{err.res.data.msg}</p>
+      {error.response.data.status ? <p>{error.response.data.status}</p> : null}
+      {error.response.data.msg ? <p>{error.response.data.msg}</p> : null}
     </section>
-  )
-}
+  );
+};
