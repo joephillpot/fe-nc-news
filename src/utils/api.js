@@ -11,13 +11,13 @@ export const getArticles = () => {
 };
 
 export const getArticleById = (article_id) => {
-  return api.get(`/api/articles/${article_id}`).then(({data})=> {
-    return data.article
-  })
-}
+  return api.get(`/api/articles/${article_id}`).then(({ data }) => {
+    return data.article;
+  });
+};
 
 export const getCommentsByArticleId = (article_id) => {
-  return api.get(`/api/articles/${article_id}/comments`).then(({data})=> {
-    return data.comments
-  })
-}
+  return api.get(`/api/articles/${article_id}/comments`).then(({ data }) => {
+    return data.comments;
+  });
+};
