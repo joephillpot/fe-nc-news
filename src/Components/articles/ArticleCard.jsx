@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Votes } from '../votes/Votes';
 
 export const ArticleCard = ({ article }) => {
   return (
@@ -6,7 +7,7 @@ export const ArticleCard = ({ article }) => {
       <li className="article-card" key={article.article_id}>
         <h4>posted by {article.author}</h4>
         <h3>{article.topic}</h3>
-        <p>TempVoteCount: {article.votes}</p>
+        <Votes votes={article.votes} id={article.article_id} itemToUpdate='articles'/>
         <Link to={`/article/${article.article_id}`}>
           <h2>{article.title}</h2>
           <img className="article-img" src={article.article_img_url} alt={`${article.title} image`} />
