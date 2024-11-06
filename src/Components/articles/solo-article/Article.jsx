@@ -1,3 +1,5 @@
+import { Votes } from "../../votes/Votes";
+
 export const Article = (props) => {
   const { article } = props;
 
@@ -9,7 +11,7 @@ export const Article = (props) => {
       <h2>{article.title}</h2>
       <p>{article.body}</p>
       <img src={article.article_img_url} alt={`${article.title} image`} />
-      <p>Votes: {article.votes}</p>
+      <Votes votes={article.votes} id={article.article_id} itemToUpdate='articles' />
     </article>
   );
 };
