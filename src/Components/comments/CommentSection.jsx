@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { getCommentsByArticleId } from '../../utils/api';
+import { getCommentsByArticleId, postComment } from '../../utils/api';
 import { Loading } from '../Loading';
 import { Error } from '../Error';
 import { CommentList } from './CommentList';
+import { CommentAdder } from './CommentAdder';
 
 export const CommentSection = ({ article_id }) => {
   const [comments, setComments] = useState([]);
+  const [commentPosted, setCommentPosted] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,12 +18,13 @@ export const CommentSection = ({ article_id }) => {
         setComments(comments);
         setIsLoading(false);
         setError(null);
+        setCommentPosted(false)
       })
       .catch((err) => {
         setError(err);
         setIsLoading(false);
       });
-  }, [article_id]);
+  }, [article_id, commentPosted]);
 
   if(isLoading){
     return (
@@ -37,6 +40,7 @@ export const CommentSection = ({ article_id }) => {
 
   return (
     <section>
+      <CommentAdder article_id={article_id} setCommentPosted={setCommentPosted} />
       <CommentList comments={comments} />
     </section>
   )

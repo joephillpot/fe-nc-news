@@ -25,10 +25,18 @@ export const getCommentsByArticleId = (article_id) => {
 export const setVotes = (id, itemToUpdate, votes) => {
   return api.patch(`/${itemToUpdate}/${id}`, { inc_votes: votes }).then(({ data }) => {
     if (itemToUpdate === 'articles') {
+      console.log(data)
       return data.article.votes;
     }
     if (itemToUpdate === 'comments') {
-      return data.comment.votes;
+      console.log(data)
+      return data.updatedComment.votes;
     }
   });
 };
+
+export const postComment = (article_id, user, comment) => {
+  return api.post(`/articles/${article_id}/comments`, {"author": user, "body": comment}).then((response) => {
+    console.log(response);
+  })
+}
