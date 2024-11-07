@@ -28,7 +28,13 @@ export const setVotes = (id, itemToUpdate, votes) => {
       return data.article.votes;
     }
     if (itemToUpdate === 'comments') {
-      return data.comment.votes;
+      return data.updatedComment.votes;
     }
   });
 };
+
+export const postComment = (article_id, user, comment) => {
+  return api.post(`/articles/${article_id}/comments`, {"author": user, "body": comment}).then((response) => {
+    console.log(response);
+  })
+}

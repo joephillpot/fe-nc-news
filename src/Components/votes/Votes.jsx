@@ -13,7 +13,7 @@ export const Votes = ({votes, id, itemToUpdate}) => {
       }).catch((error) => {
         setError(error)
       })
-  }, [votes, id, itemToUpdate])
+  }, [votes])
 
   const handleUpVote = () => {
     setCurrentVotes(currentVotes + 1)
