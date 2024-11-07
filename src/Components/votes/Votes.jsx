@@ -46,7 +46,6 @@ export const Votes = ({votes, id, itemToUpdate}) => {
       <button onClick={handleUpVote} disabled={disableUpVote}>+1</button>
       <h4>{currentVotes}</h4>
       <button onClick={handleDownVote} disabled={disableDownVote}>-1</button>
-      {console.log(error)}
       {error ? <p>Error, try again</p> : null}
     </section>
   )
