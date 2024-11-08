@@ -4,7 +4,7 @@ import { Error } from '../Error';
 import { UserContext } from '../../context/user';
 import { postComment } from '../../utils/api';
 
-export const CommentAdder = ({ article_id, setCommentPosted }) => {
+export const CommentAdder = ({ article_id, setCommentChanged }) => {
   const [comment, setComment] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,7 +25,7 @@ export const CommentAdder = ({ article_id, setCommentPosted }) => {
       setIsLoading(false);
       setError(null);
       setComment('');
-      setCommentPosted(true);
+      setCommentChanged(true);
     });
   };
 

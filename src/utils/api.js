@@ -38,3 +38,8 @@ export const postComment = (article_id, user, comment) => {
     console.log(response);
   })
 }
+
+export const deleteItem = (id, itemToDelete) => {
+  console.log(id, itemToDelete);
+  return api.delete(`/${itemToDelete}/${id}`)
+}

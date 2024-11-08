@@ -7,7 +7,7 @@ import { CommentAdder } from './CommentAdder';
 
 export const CommentSection = ({ article_id }) => {
   const [comments, setComments] = useState([]);
-  const [commentPosted, setCommentPosted] = useState(false)
+  const [commentChanged, setCommentChanged] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -18,13 +18,13 @@ export const CommentSection = ({ article_id }) => {
         setComments(comments);
         setIsLoading(false);
         setError(null);
-        setCommentPosted(false)
+        setCommentChanged(false)
       })
       .catch((err) => {
         setError(err);
         setIsLoading(false);
       });
-  }, [article_id, commentPosted]);
+  }, [article_id, commentChanged]);
 
   if(isLoading){
     return (
@@ -40,8 +40,8 @@ export const CommentSection = ({ article_id }) => {
 
   return (
     <section>
-      <CommentAdder article_id={article_id} setCommentPosted={setCommentPosted} />
-      <CommentList comments={comments} />
+      <CommentAdder article_id={article_id} setCommentChanged={setCommentChanged} />
+      <CommentList comments={comments} setCommentChanged={setCommentChanged}/>
     </section>
   )
 };
