@@ -36,8 +36,8 @@ export const ArticlePage = () => {
 
   return (
     <>
-      <section className='article'>
-        <Article article={article}/>
+      <section className="article">
+        <Article article={article} />
       </section>
       <section className="article-comments">
         <CommentSection article_id={article_id} />

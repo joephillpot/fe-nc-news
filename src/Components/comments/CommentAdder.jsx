@@ -26,7 +26,10 @@ export const CommentAdder = ({ article_id, setCommentChanged }) => {
       setError(null);
       setComment('');
       setCommentChanged(true);
-    });
+    }).catch((err) => {
+      setError(err)
+      setIsLoading(false)
+    })
   };
 
   if (isLoading) {
@@ -44,6 +47,7 @@ export const CommentAdder = ({ article_id, setCommentChanged }) => {
         <textarea id="comment" type="text" onChange={handleComment} />
         <button onClick={handleSubmit}>Post</button>
       </form>
+      {error ? <p>Error try again</p> : null}
     </section>
   );
 };

@@ -3,6 +3,8 @@ import { getArticles } from '../utils/api';
 import { Error } from './Error';
 import { Loading } from './Loading';
 import { ArticlesList } from './articles/ArticlesList';
+import { TopicSection } from './topics/TopicSection';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const [articleFeed, setArticleFeed] = useState([]);
@@ -23,22 +25,24 @@ export const Home = () => {
       });
   }, []);
 
-  if(isLoading){
-    return (
-      <Loading />
-    )
+  if (isLoading) {
+    return <Loading />;
   }
 
-  if(error){
-    return (
-      <Error error={error}/>
-    )
+  if (error) {
+    return <Error error={error} />;
   }
 
   return (
     <section>
       <h1>Home Feed</h1>
-      <ArticlesList articleFeed={articleFeed} />
+      <aside>
+        <Link to='/topics'><h2>Topics</h2></Link>
+        <TopicSection />
+      </aside>
+      <main>
+        <ArticlesList articleFeed={articleFeed} />
+      </main>
     </section>
   );
 };

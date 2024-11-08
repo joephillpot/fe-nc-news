@@ -6,8 +6,8 @@ export const ArticleCard = ({ article }) => {
     <section className="article-card-container">
       <li className="article-card" key={article.article_id}>
         <h4>posted by {article.author}</h4>
-        <h3>{article.topic}</h3>
-        <Votes votes={article.votes} id={article.article_id} itemToUpdate='articles'/>
+        <Link to={`/topics/${article.topic}`}><h3>{article.topic}</h3></Link>
+        <Votes votes={article.votes} id={article.article_id} itemToUpdate="articles" />
         <Link to={`/article/${article.article_id}`}>
           <h2>{article.title}</h2>
           <img className="article-img" src={article.article_img_url} alt={`${article.title} image`} />

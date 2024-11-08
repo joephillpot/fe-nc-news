@@ -1,6 +1,6 @@
 export const Error = ({ error }) => {
   console.log(error);
-  
+
   return (
     <section>
       <p>Something went wrong</p>
